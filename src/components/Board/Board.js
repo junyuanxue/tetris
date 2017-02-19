@@ -4,7 +4,7 @@ import './Board.css'
 class Board extends React.Component {
   generateRows (width) {
     return new Array(width).fill('').map((item, i) => {
-      return <td key={i} className='block empty' />
+      return <td key={i} className='block block-empty' />
     })
   }
 
