@@ -4,7 +4,7 @@ import { Provider } from 'react-redux'
 import store, { history } from '../store'
 
 import App from '../components/App'
-import Board from '../components/Board'
+import Board from '../components/Board/Board'
 
 const routes = (
   <Provider store={store}>
