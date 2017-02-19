@@ -1,19 +1,25 @@
 import React from 'react'
 
 class Board extends React.Component {
-  render () {
-    const width = 10
-    const length = 20
-
-    const row = new Array(width).map((item, i) => {
+  generateRows (width) {
+    return new Array(width).fill('').map((item, i) => {
       return <td key={i} className='block empty' />
     })
+  }
 
-    const blocks = new Array(length).map((item, i) => {
+  generateColumns (length, row) {
+    return new Array(length).fill('').map((item, i) => {
       return (
         <tr key={i}>{row}</tr>
       )
     })
+  }
+
+  render () {
+    const width = 10
+    const length = 20
+    const row = this.generateRows(width)
+    const blocks = this.generateColumns(length, row)
 
     return (
       <table id='board'>
