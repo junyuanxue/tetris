@@ -13,6 +13,10 @@ for (let i = 0; i < BOARD_WIDTH; i++) {
 }
 
 export default {
+  BOARD_WIDTH,
+
+  BOARD_HEIGHT,
+
   initialGrid,
 
   shapesMapping: [
