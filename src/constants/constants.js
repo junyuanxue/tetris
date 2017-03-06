@@ -1,9 +1,11 @@
 const initialGrid = []
 const BOARD_WIDTH = 10
 const BOARD_HEIGHT = 20
+
 for (let i = 0; i < BOARD_WIDTH; i++) {
   initialGrid.push(['grey'])
 }
+
 for (let i = 0; i < BOARD_WIDTH; i++) {
   for (let j = 0; j < BOARD_HEIGHT; j++) {
     initialGrid[i].push('grey')
