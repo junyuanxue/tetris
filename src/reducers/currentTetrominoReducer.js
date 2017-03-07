@@ -1,5 +1,5 @@
 import { handleActions } from 'redux-actions'
-import { TetrominoState } from '../constants/state'
+import { TetrominoState } from '../constants/states'
 import constants from '../constants/constants'
 const { initialGrid, tetrominoes } = constants
 

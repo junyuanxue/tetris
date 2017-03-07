@@ -1,33 +1,19 @@
 import React from 'react'
+import { Layer, Stage } from 'react-konva'
 import './Board.css'
+import constants from '../../constants/constants'
+const { BOARD_WIDTH, BOARD_HEIGHT } = constants
 
 class Board extends React.Component {
-  generateRows (width) {
-    return new Array(width).fill('').map((item, i) => {
-      return <td key={i} className='block block-empty' />
-    })
-  }
-
-  generateColumns (length, row) {
-    return new Array(length).fill('').map((item, i) => {
-      return (
-        <tr key={i}>{row}</tr>
-      )
-    })
-  }
-
   render () {
-    const width = 10
-    const length = 20
-    const row = this.generateRows(width)
-    const blocks = this.generateColumns(length, row)
-
     return (
-      <table id='board'>
-        <tbody>
-          {blocks}
-        </tbody>
-      </table>
+      <div id='board'>
+        board
+        <Stage width={BOARD_WIDTH * 30} height={BOARD_HEIGHT * 30}>
+          hello
+          <Layer />
+        </Stage>
+      </div>
     )
   }
 }
