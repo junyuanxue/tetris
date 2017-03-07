@@ -8,9 +8,7 @@ class Board extends React.Component {
   render () {
     return (
       <div id='board'>
-        board
         <Stage width={BOARD_WIDTH * 30} height={BOARD_HEIGHT * 30}>
-          hello
           <Layer />
         </Stage>
       </div>

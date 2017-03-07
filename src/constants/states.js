@@ -1,6 +1,6 @@
-import Immutable from 'immutable'
+import { Map } from 'immutable'
 
-export const TetrominoState = Immutable.map({
+export const TetrominoState = Map({
   offsetX: 0,
   offsetY: 0,
   shape: [],

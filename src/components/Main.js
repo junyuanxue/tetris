@@ -6,7 +6,6 @@ class Main extends React.Component {
     return (
       <div>
         <Board/>
-        {React.cloneElement(this.props.children, this.props)}
       </div>
     )
   }
