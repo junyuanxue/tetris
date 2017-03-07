@@ -9,7 +9,9 @@ class Board extends React.Component {
     return (
       <div id='board'>
         <Stage width={BOARD_WIDTH * 30} height={BOARD_HEIGHT * 30}>
-          <Layer />
+          <Layer>
+            Stuff
+          </Layer>
         </Stage>
       </div>
     )
