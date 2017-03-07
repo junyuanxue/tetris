@@ -1,7 +1,7 @@
 import { handleActions } from 'redux-actions'
 import { TetrominoState } from '../constants/state'
-import Constants from '../constants/constants'
-const { initialGrid, tetrominoes } = Constants
+import constants from '../constants/constants'
+const { initialGrid, tetrominoes } = constants
 
 const currentTetrominoReducer = handleActions({
   SET_CURRENT_TETROMINO: (state, { payload }) => ({

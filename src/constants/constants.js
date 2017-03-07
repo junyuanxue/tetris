@@ -12,7 +12,7 @@ for (let i = 0; i < BOARD_WIDTH; i++) {
   }
 }
 
-export default {
+const constants = {
   BOARD_WIDTH,
 
   BOARD_HEIGHT,
@@ -95,3 +95,5 @@ export default {
     }
   }
 }
+
+export default constants
