@@ -3,12 +3,23 @@ import { Rect, Group } from 'react-konva'
 import constants from '../../constants/constants'
 
 class Tetromino extends React.Component {
+  getCoordinates (shape) {
+    const coordinates = []
+    shape.forEach((row, i) => {
+      row.forEach((block, j) => {
+        if (block) coordinates.push({ x: i, y: j })
+      })
+    })
+    return coordinates
+  }
+
   render () {
     const { offsetX, offsetY, shape, color } = this.props
+    const coordinates = this.getCoordinates(shape)
 
     return (
-      <div>
-      </div>
+      <Group>
+      </Group>
     )
   }
 }
