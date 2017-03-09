@@ -1,12 +1,13 @@
 const initialGrid = []
-const BOARD_WIDTH = 10
-const BOARD_HEIGHT = 20
+const BOARD_WIDTH = 300
+const BOARD_HEIGHT = 660
+const BLOCK_SIZE = 30
 
-for (let i = 0; i < BOARD_WIDTH; i++) {
+for (let i = 0; i < BOARD_WIDTH / BLOCK_SIZE; i++) {
   initialGrid.push(['grey'])
 }
 
-for (let i = 0; i < BOARD_WIDTH; i++) {
+for (let i = 0; i < BOARD_WIDTH / BLOCK_SIZE; i++) {
   for (let j = 0; j < BOARD_HEIGHT; j++) {
     initialGrid[i].push('grey')
   }
@@ -16,6 +17,8 @@ const constants = {
   BOARD_WIDTH,
 
   BOARD_HEIGHT,
+
+  BLOCK_SIZE,
 
   initialGrid,
 

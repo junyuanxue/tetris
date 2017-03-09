@@ -9,7 +9,7 @@ class Board extends React.Component {
   render () {
     return (
       <div id='board'>
-        <Stage width={BOARD_WIDTH * 30} height={BOARD_HEIGHT * 30}>
+        <Stage width={BOARD_WIDTH} height={BOARD_HEIGHT}>
           <Layer>
             <CurrentTetrominoContainer />
           </Layer>

@@ -13,10 +13,14 @@ class Tetromino extends React.Component {
     return coordinates
   }
 
+  buildTetromino () {
+
+  }
+
   render () {
     const { offsetX, offsetY, shape, color } = this.props
     const coordinates = this.getCoordinates(shape)
-
+    const xs = coordinates.map(pair => pair.x + offsetX)
     return (
       <Group>
       </Group>
