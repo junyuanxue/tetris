@@ -8,7 +8,7 @@ for (let i = 0; i < BOARD_WIDTH / BLOCK_SIZE; i++) {
 }
 
 for (let i = 0; i < BOARD_WIDTH / BLOCK_SIZE; i++) {
-  for (let j = 0; j < BOARD_HEIGHT; j++) {
+  for (let j = 0; j < BOARD_HEIGHT / BLOCK_SIZE; j++) {
     initialGrid[i].push('grey')
   }
 }
@@ -22,9 +22,7 @@ const constants = {
 
   initialGrid,
 
-  shapesMapping: [
-    'i', 'o', 't', 'j', 'l', 'z', 's'
-  ],
+  shapesMapping: ['i', 'o', 't', 'j', 'l', 'z', 's'],
 
   tetrominoes: {
     i: {
