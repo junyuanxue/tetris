@@ -13,7 +13,7 @@ const mapStateToProps = state => {
       color: currentState.color
     }
   }
-  return initialState
+  return initialState.toObject()
 }
 
 const CurrentTetrominoContainer = connect(mapStateToProps)(Tetromino)

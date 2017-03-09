@@ -1,14 +1,13 @@
 import { createStore, compose } from 'redux'
-import { syncHistoryWithStore } from 'react-router-redux'
-import { browserHistory } from 'react-router'
+// import { syncHistoryWithStore } from 'react-router-redux'
+// import { browserHistory } from 'react-router'
+import { Map } from 'immutable'
 
 // import the root reducer
 import rootReducer from './reducers/index'
 
 // create an object for the default data
-const defaultState = {
-
-}
+const defaultState = Map()
 
 // set up redux dev tool
 const enhancer = compose(
@@ -17,7 +16,7 @@ const enhancer = compose(
 
 const store = createStore(rootReducer, defaultState, enhancer)
 
-export const history = syncHistoryWithStore(browserHistory, store)
+// export const history = syncHistoryWithStore(browserHistory, store)
 
 // hot reloading redux
 if (module.hot) {
