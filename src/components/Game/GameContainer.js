@@ -1,7 +1,10 @@
 import { connect } from 'react-redux'
 import Game from './Game'
-import { setCurrentTetromino } from '../../actions/index'
 import constants from '../../constants/constants'
+import {
+  setCurrentTetromino,
+  moveDown
+} from '../../actions/index'
 
 const mapStateToProps = state => {
   return { isPlaying: true }
