@@ -1,6 +1,6 @@
 import React from 'react'
 import Board from './Board/Board'
-import GameContainer from './Game/Game'
+import GameContainer from './Game/GameContainer'
 
 class Main extends React.Component {
   render () {

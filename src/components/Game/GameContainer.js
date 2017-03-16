@@ -1,6 +1,6 @@
 import { connect } from 'react-redux'
 import { setCurrentTetromino } from '../../actions/index'
-import constants from '../constants/constants'
+import constants from '../../constants/constants'
 
 const mapStateToProps = state => {
   return { isPlaying: true }
@@ -15,3 +15,5 @@ const mapDispatchToProps = dispatch => {
 }
 
 const GameContainer = connect(mapStateToProps, mapDispatchToProps)()
+
+export default GameContainer
