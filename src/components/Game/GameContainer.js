@@ -25,6 +25,7 @@ const mapDispatchToProps = dispatch => {
 
 function dropTetromino (dispatch) {
   dispatch(moveDown())
+  window.requestAnimationFrame((dropTetromino.bind(this, dispatch)))
 }
 
 
