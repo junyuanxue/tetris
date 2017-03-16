@@ -5,8 +5,8 @@ const { initialGrid, tetrominoes, BLOCK_SIZE } = constants
 
 const currentTetrominoReducer = handleActions({
   SET_CURRENT_TETROMINO: (state, { payload }) => ({
-    offsetX: 0,
-    offsetY: 1,
+    offsetX: BLOCK_SIZE * 4,
+    offsetY: 0,
     shape: tetrominoes[payload.randomShape].shape,
     name: payload.randomShape,
     color: tetrominoes[payload.randomShape].color

@@ -6,6 +6,8 @@ import {
   moveDown
 } from '../../actions/index'
 
+const { DROP_SPEED, shapesMapping } = constants
+
 const mapStateToProps = state => {
   return { isPlaying: true }
 }
@@ -13,7 +15,6 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     startGame: () => {
-      const { shapesMapping } = constants
       const randomNumber = Math.floor(Math.random() * 7)
       const randomShape = shapesMapping[randomNumber]
 
@@ -25,9 +26,11 @@ const mapDispatchToProps = dispatch => {
 
 function dropTetromino (dispatch) {
   dispatch(moveDown())
-  window.requestAnimationFrame((dropTetromino.bind(this, dispatch)))
-}
 
+  window.setTimeout(() => {
+    window.requestAnimationFrame((dropTetromino.bind(this, dispatch)))
+  }, DROP_SPEED)
+}
 
 
 const GameContainer = connect(mapStateToProps, mapDispatchToProps)(Game)

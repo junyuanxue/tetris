@@ -20,6 +20,8 @@ const constants = {
 
   BLOCK_SIZE,
 
+  DROP_SPEED: 500,
+
   initialGrid,
 
   shapesMapping: ['i', 'o', 't', 'j', 'l', 'z', 's'],
@@ -32,7 +34,7 @@ const constants = {
 				[0, 0, 0, 0],
         [0, 0, 0, 0]
       ],
-      color: 'red'
+      color: 'crimson'
     },
 
     o: {
@@ -42,7 +44,7 @@ const constants = {
 				[0, 0, 0, 0],
         [0, 0, 0, 0]
       ],
-      color: 'blue'
+      color: 'lightblue'
     },
 
     t: {
@@ -82,7 +84,7 @@ const constants = {
         [0, 0, 0, 0],
         [0, 0, 0, 0]
       ],
-      color: 'purple'
+      color: 'lavender'
     },
 
     s: {
@@ -92,7 +94,7 @@ const constants = {
         [0, 0, 0, 0],
         [0, 0, 0, 0]
       ],
-      color: 'brown'
+      color: 'lightcoral'
     }
   }
 }
