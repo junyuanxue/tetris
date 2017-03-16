@@ -8,11 +8,15 @@ const mapStateToProps = state => {
 }
 
 const mapDispatchToProps = dispatch => {
-  const { shapesMapping } = constants
-  const randomNumber = Math.floor(Math.random() * 7)
-  const randomShape = shapesMapping[randomNumber]
+  return {
+    startGame: () => {
+      const { shapesMapping } = constants
+      const randomNumber = Math.floor(Math.random() * 7)
+      const randomShape = shapesMapping[randomNumber]
 
-  dispatch(setCurrentTetromino({ randomShape }))
+      dispatch(setCurrentTetromino({ randomShape }))
+    }
+  }
 }
 
 const GameContainer = connect(mapStateToProps, mapDispatchToProps)(Game)
