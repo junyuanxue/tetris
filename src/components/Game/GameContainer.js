@@ -1,4 +1,5 @@
 import { connect } from 'react-redux'
+import Game from './Game'
 import { setCurrentTetromino } from '../../actions/index'
 import constants from '../../constants/constants'
 
@@ -14,6 +15,6 @@ const mapDispatchToProps = dispatch => {
   dispatch(setCurrentTetromino({ randomShape }))
 }
 
-const GameContainer = connect(mapStateToProps, mapDispatchToProps)()
+const GameContainer = connect(mapStateToProps, mapDispatchToProps)(Game)
 
 export default GameContainer
