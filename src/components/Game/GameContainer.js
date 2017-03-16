@@ -15,9 +15,16 @@ const mapDispatchToProps = dispatch => {
       const randomShape = shapesMapping[randomNumber]
 
       dispatch(setCurrentTetromino({ randomShape }))
+      dropTetromino(dispatch)
     }
   }
 }
+
+function dropTetromino (dispatch) {
+  dispatch(moveDown())
+}
+
+
 
 const GameContainer = connect(mapStateToProps, mapDispatchToProps)(Game)
 
