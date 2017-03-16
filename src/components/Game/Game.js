@@ -9,4 +9,8 @@ class Game extends React.Component {
   }
 }
 
+Game.propTypes = {
+  startGame: React.PropTypes.func
+}
+
 export default Game
