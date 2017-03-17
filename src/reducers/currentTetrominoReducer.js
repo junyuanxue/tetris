@@ -11,8 +11,17 @@ const currentTetrominoReducer = handleActions({
     name: payload.randomShape,
     color: tetrominoes[payload.randomShape].color
   }),
+
   MOVE_DOWN: (state) => (
     Object.assign({}, state, { offsetY: state.offsetY + BLOCK_SIZE })
+  ),
+
+  MOVE_LEFT: (state) => (
+    Object.assign({}, state, { offsetX: state.offsetX - BLOCK_SIZE })
+  ),
+
+  MOVE_RIGHT: (state) => (
+    Object.assign({}, state, { offsetX: state.offsetX + BLOCK_SIZE })
   )
 }, TetrominoState) // currentTetrominoState
 
