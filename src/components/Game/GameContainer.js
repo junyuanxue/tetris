@@ -3,7 +3,9 @@ import Game from './Game'
 import constants from '../../constants/constants'
 import {
   setCurrentTetromino,
-  moveDown
+  moveDown,
+  moveLeft,
+  moveRight
 } from '../../actions/index'
 
 const { DROP_SPEED, shapesMapping } = constants
@@ -30,6 +32,25 @@ function dropTetromino (dispatch) {
   window.setTimeout(() => {
     window.requestAnimationFrame((dropTetromino.bind(this, dispatch)))
   }, DROP_SPEED)
+
+  moveTetromino(dispatch)
+}
+
+function moveTetromino (dispatch) {
+  window.addEventListener('keydown', e => {
+    switch (e.keyCode) {
+      case 37:
+        e.preventDefault()
+        dispatch(moveLeft())
+        break
+      case 39:
+        e.preventDefault()
+        dispatch(moveRight())
+        break
+      default:
+        break
+    }
+  })
 }
 
 
