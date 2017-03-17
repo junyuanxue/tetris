@@ -19,17 +19,21 @@ const mapStateToProps = state => {
 const mapDispatchToProps = (dispatch) => {
   return {
     startGame: () => {
-      const randomNumber = Math.floor(Math.random() * 7)
-      const randomShape = shapesMapping[randomNumber]
-
-      dispatch(setCurrentTetromino({ randomShape }))
-      dispatch(dropTetromino())
+      setAndDropNewTetromino(dispatch)
       dispatch(controlTetromino())
     }
   }
 }
 
 const GameContainer = connect(mapStateToProps, mapDispatchToProps)(Game)
+
+function setAndDropNewTetromino (dispatch) {
+  const randomNumber = Math.floor(Math.random() * 7)
+  const randomShape = shapesMapping[randomNumber]
+
+  dispatch(setCurrentTetromino({ randomShape }))
+  dispatch(dropTetromino())
+}
 
 function dropTetromino () {
   return (dispatch, getState) => {
@@ -41,6 +45,9 @@ function dropTetromino () {
       window.setTimeout(() => {
         window.requestAnimationFrame(() => dispatch(dropTetromino()))
       }, DROP_SPEED)
+    } else {
+      // freeze current tetromino and add to group
+      setAndDropNewTetromino(dispatch)
     }
   }
 }

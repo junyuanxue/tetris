@@ -22,6 +22,10 @@ const constants = {
 
   DROP_SPEED: 500,
 
+  START_X: 4,
+
+  START_Y: -2,
+
   initialGrid,
 
   shapesMapping: ['i', 'o', 't', 'j', 'l', 'z', 's'],
