@@ -16,14 +16,14 @@ const mapStateToProps = state => {
   return { isPlaying: true }
 }
 
-const mapDispatchToProps = (dispatch, getState) => {
+const mapDispatchToProps = (dispatch) => {
   return {
     startGame: () => {
       const randomNumber = Math.floor(Math.random() * 7)
       const randomShape = shapesMapping[randomNumber]
 
       dispatch(setCurrentTetromino({ randomShape }))
-      dropTetromino(dispatch)
+      dispatch(dropTetromino())
       dispatch(controlTetromino())
     }
   }
@@ -31,20 +31,25 @@ const mapDispatchToProps = (dispatch, getState) => {
 
 const GameContainer = connect(mapStateToProps, mapDispatchToProps)(Game)
 
-function dropTetromino (dispatch) {
-  dispatch(moveDown())
+function dropTetromino () {
+  return (dispatch, getState) => {
+    const tetromino = getState().get('currentTetrominoReducer')
 
-  window.setTimeout(() => {
-    window.requestAnimationFrame((dropTetromino.bind(this, dispatch)))
-  }, DROP_SPEED)
+    if (!hasCollision('down', tetromino)) {
+      dispatch(moveDown())
+
+      window.setTimeout(() => {
+        window.requestAnimationFrame(() => dispatch(dropTetromino()))
+      }, DROP_SPEED)
+    }
+  }
 }
 
-function controlTetromino (dispatch) {
+function controlTetromino () {
   return (dispatch, getState) => {
     window.addEventListener('keydown', e => {
       const { keyCode } = e
-      const state = getState()
-      const tetromino = state.get('currentTetrominoReducer')
+      const tetromino = getState().get('currentTetrominoReducer')
 
       if (keyCode === 38) {
         e.preventDefault()
@@ -52,6 +57,7 @@ function controlTetromino (dispatch) {
       } else {
         const movement = mapMovement(keyCode, dispatch)
         if (movement && !hasCollision(movement.direction, tetromino)) {
+          e.preventDefault()
           movement.moveTetromino()
         }
       }
