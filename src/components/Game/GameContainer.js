@@ -22,6 +22,7 @@ const mapDispatchToProps = dispatch => {
 
       dispatch(setCurrentTetromino({ randomShape }))
       dropTetromino(dispatch)
+      moveTetromino(dispatch)
     }
   }
 }
@@ -32,8 +33,6 @@ function dropTetromino (dispatch) {
   window.setTimeout(() => {
     window.requestAnimationFrame((dropTetromino.bind(this, dispatch)))
   }, DROP_SPEED)
-
-  moveTetromino(dispatch)
 }
 
 function moveTetromino (dispatch) {
