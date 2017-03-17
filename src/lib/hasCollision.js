@@ -12,22 +12,9 @@ const hasCollision = (direction, tetromino) => {
   let changeX = 0
   let changeY = 0
 
-  switch (direction) {
-    case 'left':
-      changeX = -1
-      break
-
-    case 'right':
-      changeX = 1
-      break
-
-    case 'down':
-      changeY = 1
-      break
-
-    default:
-      break
-  }
+  if (direction === 'left') changeX = -1
+  else if (direction === 'right') changeX = 1
+  else if (direction === 'down') changeY = 1
 
   const { shape } = tetromino
   shape.forEach((row, i) => {
