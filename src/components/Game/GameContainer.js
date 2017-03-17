@@ -11,8 +11,35 @@ import {
 
 const { DROP_SPEED, shapesMapping } = constants
 
-const controlTetromino = () => (
-  (dispatch, getState) => {
+const mapStateToProps = state => {
+  return { isPlaying: true }
+}
+
+const mapDispatchToProps = (dispatch, getState) => {
+  return {
+    startGame: () => {
+      const randomNumber = Math.floor(Math.random() * 7)
+      const randomShape = shapesMapping[randomNumber]
+
+      dispatch(setCurrentTetromino({ randomShape }))
+      dropTetromino(dispatch)
+      dispatch(controlTetromino())
+    }
+  }
+}
+
+const GameContainer = connect(mapStateToProps, mapDispatchToProps)(Game)
+
+function dropTetromino (dispatch) {
+  dispatch(moveDown())
+
+  window.setTimeout(() => {
+    window.requestAnimationFrame((dropTetromino.bind(this, dispatch)))
+  }, DROP_SPEED)
+}
+
+function controlTetromino (dispatch) {
+  return (dispatch, getState) => {
     const state = getState()
     const tetromino = state.get('currentTetrominoReducer')
 
@@ -43,37 +70,8 @@ const controlTetromino = () => (
         default:
           break
       }
-    }
-  }
-)
-
-const mapStateToProps = state => {
-  return { isPlaying: true }
-}
-
-const mapDispatchToProps = (dispatch, getState) => {
-  return {
-    startGame: () => {
-      const randomNumber = Math.floor(Math.random() * 7)
-      const randomShape = shapesMapping[randomNumber]
-
-      dispatch(setCurrentTetromino({ randomShape }))
-      dropTetromino(dispatch)
-      dispatch(controlTetromino())
-    }
+    })
   }
 }
-
-const GameContainer = connect(mapStateToProps, mapDispatchToProps)(Game)
-
-function dropTetromino (dispatch) {
-  dispatch(moveDown())
-
-  window.setTimeout(() => {
-    window.requestAnimationFrame((dropTetromino.bind(this, dispatch)))
-  }, DROP_SPEED)
-}
-
-
 
 export default GameContainer
