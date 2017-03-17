@@ -41,17 +41,15 @@ function dropTetromino (dispatch) {
 
 function controlTetromino (dispatch) {
   return (dispatch, getState) => {
-    const state = getState()
-
     window.addEventListener('keydown', e => {
+      const state = getState()
+      const tetromino = state.get('currentTetrominoReducer')
+
       switch (e.keyCode) {
         case 37:
-          const tetromino = state.get('currentTetrominoReducer')
-          console.log(tetromino)
           if (!hasCollision('left', tetromino)) {
             e.preventDefault()
             dispatch(moveLeft())
-            console.log(tetromino)
           }
           break
 
