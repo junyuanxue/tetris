@@ -42,18 +42,22 @@ function controlTetromino (dispatch) {
         e.preventDefault()
         dispatch(moveLeft())
         break
+
       case 39:
         e.preventDefault()
         dispatch(moveRight())
         break
+
       case 40:
         e.preventDefault()
         dispatch(moveDown())
         break
+
       case 38:
         e.preventDefault()
         // handleRotation
         break
+
       default:
         break
     }
