@@ -1,4 +1,4 @@
-import hasCollision from './detectBorders'
+import hasCollision from './hasCollision'
 
 export default {
   hasCollision
