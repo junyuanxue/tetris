@@ -5,7 +5,8 @@ Tetris game built with React and Redux.
 
 ## Tools :wrench:
 * React
-* Redux
+* Redux Immutable
+* React Konva
 
 ## Author :cat:
 Junyuan Xue
