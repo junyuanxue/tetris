@@ -42,37 +42,39 @@ function dropTetromino (dispatch) {
 function controlTetromino (dispatch) {
   return (dispatch, getState) => {
     window.addEventListener('keydown', e => {
+      const { keyCode } = e
       const state = getState()
       const tetromino = state.get('currentTetrominoReducer')
 
-      switch (e.keyCode) {
-        case 37:
-          if (!hasCollision('left', tetromino)) {
-            e.preventDefault()
-            dispatch(moveLeft())
-          }
-          break
-
-        case 39:
-          e.preventDefault()
-          dispatch(moveRight())
-          break
-
-        case 40:
-          e.preventDefault()
-          dispatch(moveDown())
-          break
-
-        case 38:
-          e.preventDefault()
-          // handleRotation
-          break
-
-        default:
-          break
+      if (keyCode === 38) {
+        e.preventDefault()
+        // handleRotation
+      } else {
+        const movement = mapMovement(keyCode, dispatch)
+        if (movement && !hasCollision(movement.direction, tetromino)) {
+          movement.moveTetromino()
+        }
       }
     })
   }
+}
+
+function mapMovement (keyCode, dispatch) {
+  const keyMapping = {
+    37: {
+      direction: 'left',
+      moveTetromino: () => dispatch(moveLeft())
+    },
+    39: {
+      direction: 'right',
+      moveTetromino: () => dispatch(moveRight())
+    },
+    40: {
+      direction: 'down',
+      moveTetromino: () => dispatch(moveDown())
+    }
+  }
+  return keyMapping[keyCode]
 }
 
 export default GameContainer
