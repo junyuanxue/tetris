@@ -1,4 +1,6 @@
-import { BLOCK_SIZE, BOARD_WIDTH, BOARD_HEIGHT } from '../constants/constants'
+import constants from '../constants/constants'
+
+const { BLOCK_SIZE, BOARD_WIDTH, BOARD_HEIGHT } = constants
 
 const hasCollision = (direction, tetromino) => {
   let isColliding = false
@@ -30,11 +32,13 @@ const hasCollision = (direction, tetromino) => {
   const { shape } = tetromino
   shape.forEach((row, i) => {
     row.forEach((block, j) => {
-      let finalX = currentX + changeX + j
-      let finalY = currentY + changeY + i
+      if (block) {
+        const finalX = currentX + changeX + j
+        const finalY = currentY + changeY + i
 
-      if (finalX < 0 || finalX >= numOfBlocksX || finalY >= numOfBlocksY) {
-        isColliding = true
+        if (finalX < 0 || finalX >= numOfBlocksX || finalY >= numOfBlocksY) {
+          isColliding = true
+        }
       }
     })
   })

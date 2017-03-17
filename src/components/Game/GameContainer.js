@@ -1,7 +1,7 @@
 import { connect } from 'react-redux'
 import Game from './Game'
 import constants from '../../constants/constants'
-import { hasCollision } from '../../lib/index'
+import helpers from '../../lib/index'
 import {
   setCurrentTetromino,
   moveDown,
@@ -10,6 +10,7 @@ import {
 } from '../../actions/index'
 
 const { DROP_SPEED, shapesMapping } = constants
+const { hasCollision } = helpers
 
 const mapStateToProps = state => {
   return { isPlaying: true }
@@ -41,14 +42,16 @@ function dropTetromino (dispatch) {
 function controlTetromino (dispatch) {
   return (dispatch, getState) => {
     const state = getState()
-    const tetromino = state.get('currentTetrominoReducer')
 
     window.addEventListener('keydown', e => {
       switch (e.keyCode) {
         case 37:
-          if (hasCollision('left', tetromino)) {
+          const tetromino = state.get('currentTetrominoReducer')
+          console.log(tetromino)
+          if (!hasCollision('left', tetromino)) {
             e.preventDefault()
             dispatch(moveLeft())
+            console.log(tetromino)
           }
           break
 

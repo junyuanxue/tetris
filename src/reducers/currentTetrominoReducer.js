@@ -1,7 +1,7 @@
 import { handleActions } from 'redux-actions'
 import { TetrominoState } from '../constants/states'
 import constants from '../constants/constants'
-const { initialGrid, tetrominoes, BLOCK_SIZE } = constants
+const { tetrominoes, BLOCK_SIZE } = constants
 
 const currentTetrominoReducer = handleActions({
   SET_CURRENT_TETROMINO: (state, { payload }) => ({
@@ -13,15 +13,15 @@ const currentTetrominoReducer = handleActions({
   }),
 
   MOVE_DOWN: (state) => (
-    Object.assign({}, state, { offsetY: state.offsetY + BLOCK_SIZE })
+    { ...state, offsetY: state.offsetY + BLOCK_SIZE }
   ),
 
   MOVE_LEFT: (state) => (
-    Object.assign({}, state, { offsetX: state.offsetX - BLOCK_SIZE })
+    { ...state, offsetX: state.offsetX - BLOCK_SIZE }
   ),
 
   MOVE_RIGHT: (state) => (
-    Object.assign({}, state, { offsetX: state.offsetX + BLOCK_SIZE })
+    { ...state, offsetX: state.offsetX + BLOCK_SIZE }
   )
 }, TetrominoState) // currentTetrominoState
 
