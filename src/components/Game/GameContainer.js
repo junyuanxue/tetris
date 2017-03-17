@@ -22,7 +22,7 @@ const mapDispatchToProps = dispatch => {
 
       dispatch(setCurrentTetromino({ randomShape }))
       dropTetromino(dispatch)
-      moveTetromino(dispatch)
+      controlTetromino(dispatch)
     }
   }
 }
@@ -35,7 +35,7 @@ function dropTetromino (dispatch) {
   }, DROP_SPEED)
 }
 
-function moveTetromino (dispatch) {
+function controlTetromino (dispatch) {
   window.addEventListener('keydown', e => {
     switch (e.keyCode) {
       case 37:
@@ -45,6 +45,14 @@ function moveTetromino (dispatch) {
       case 39:
         e.preventDefault()
         dispatch(moveRight())
+        break
+      case 40:
+        e.preventDefault()
+        dispatch(moveDown())
+        break
+      case 38:
+        e.preventDefault()
+        // handleRotation
         break
       default:
         break
