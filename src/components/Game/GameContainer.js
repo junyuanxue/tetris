@@ -24,6 +24,8 @@ const mapDispatchToProps = dispatch => {
   }
 }
 
+const GameContainer = connect(mapStateToProps, mapDispatchToProps)(Game)
+
 function dropTetromino (dispatch) {
   dispatch(moveDown())
 
@@ -33,6 +35,5 @@ function dropTetromino (dispatch) {
 }
 
 
-const GameContainer = connect(mapStateToProps, mapDispatchToProps)(Game)
 
 export default GameContainer
