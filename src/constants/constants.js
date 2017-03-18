@@ -38,7 +38,7 @@ const constants = {
 				[0, 0, 0, 0],
         [0, 0, 0, 0]
       ],
-      color: 'crimson'
+      color: '#ff598f'
     },
 
     o: {
@@ -48,7 +48,7 @@ const constants = {
 				[0, 0, 0, 0],
         [0, 0, 0, 0]
       ],
-      color: 'lightblue'
+      color: '#FFFF00'
     },
 
     t: {
@@ -58,7 +58,7 @@ const constants = {
 				[0, 0, 0, 0],
         [0, 0, 0, 0]
       ],
-      color: 'green'
+      color: '#ffa500'
     },
 
     j: {
@@ -68,7 +68,7 @@ const constants = {
         [0, 0, 0, 0],
         [0, 0, 0, 0]
       ],
-      color: 'orange'
+      color: '#01dddd'
     },
 
     l: {
@@ -78,7 +78,7 @@ const constants = {
         [0, 0, 0, 0],
         [0, 0, 0, 0]
       ],
-      color: 'yellow'
+      color: '#FF0000'
     },
 
     z: {
@@ -88,7 +88,7 @@ const constants = {
         [0, 0, 0, 0],
         [0, 0, 0, 0]
       ],
-      color: 'lavender'
+      color: '#BF5FFF'
     },
 
     s: {
@@ -98,7 +98,7 @@ const constants = {
         [0, 0, 0, 0],
         [0, 0, 0, 0]
       ],
-      color: 'lightcoral'
+      color: '#00B2EE'
     }
   }
 }

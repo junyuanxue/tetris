@@ -46,7 +46,11 @@ function dropTetromino () {
         window.requestAnimationFrame(() => dispatch(dropTetromino()))
       }, DROP_SPEED)
     } else {
-      // freeze current tetromino and add to group
+                        //
+                        // TODO:
+                        // freeze current tetromino and add to group
+                        //
+                        //
       setAndDropNewTetromino(dispatch)
     }
   }
