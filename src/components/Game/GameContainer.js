@@ -48,7 +48,7 @@ function dropTetromino () {
     } else {
                         //
                         // TODO:
-                        // freeze current tetromino and add to group
+                        // freeze current tetromino and add to tetris stack
                         //
                         //
       setAndDropNewTetromino(dispatch)
@@ -64,7 +64,10 @@ function controlTetromino () {
 
       if (keyCode === 38) {
         e.preventDefault()
-        // handleRotation
+                      //
+                      // TODO:
+                      // handleRotation
+                      //
       } else {
         const movement = mapMovement(keyCode, dispatch)
         if (movement && !hasCollision(movement.direction, tetromino)) {
