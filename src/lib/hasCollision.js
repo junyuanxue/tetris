@@ -17,11 +17,11 @@ const hasCollision = (direction, tetromino) => {
   else if (direction === 'down') changeY = 1
 
   const { shape } = tetromino
-  shape.forEach((row, i) => {
-    row.forEach((block, j) => {
+  shape.forEach((row, y) => {
+    row.forEach((block, x) => {
       if (block) {
-        const finalX = currentX + changeX + j
-        const finalY = currentY + changeY + i
+        const finalX = currentX + changeX + x
+        const finalY = currentY + changeY + y
 
         if (finalX < 0 || finalX >= numOfBlocksX || finalY >= numOfBlocksY) {
           isColliding = true
