@@ -7,3 +7,5 @@ export const TetrominoState = Map({
   name: '',
   color: ''
 })
+
+export const TetrominoStackState = Map({ tetrominoStack: [] })
