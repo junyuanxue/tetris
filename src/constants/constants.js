@@ -1,5 +1,5 @@
 const initialGrid = []
-const BOARD_WIDTH = 300
+const BOARD_WIDTH = 330
 const BOARD_HEIGHT = 660
 const BLOCK_SIZE = 30
 

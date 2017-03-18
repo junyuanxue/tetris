@@ -23,7 +23,7 @@ const hasCollision = (direction, tetromino) => {
         const finalX = currentX + changeX + j
         const finalY = currentY + changeY + i
 
-        if (finalX < 0 || finalX > numOfBlocksX || finalY >= numOfBlocksY - 1) {
+        if (finalX < 0 || finalX >= numOfBlocksX || finalY >= numOfBlocksY) {
           isColliding = true
         }
       }

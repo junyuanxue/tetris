@@ -10,7 +10,7 @@ class Tetromino extends React.Component {
     const coordinates = []
     shape.forEach((row, i) => {
       row.forEach((block, j) => {
-        if (block) coordinates.push({ x: i, y: j })
+        if (block) coordinates.push({ x: j, y: i })
       })
     })
     return coordinates
