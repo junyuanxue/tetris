@@ -103,7 +103,7 @@ function mapMovement (keyCode, dispatch) {
 }
 
 function rotateTetromino (tetromino, dispatch) {
-  const shape = { tetromino }
+  const { shape } = tetromino
   const rotatedShape = rotateShape(shape)
   const rotatedTetromino = { ...tetromino, shape: rotatedShape }
   dispatch(rotate(rotatedTetromino))
