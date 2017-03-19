@@ -22,6 +22,10 @@ const currentTetrominoReducer = handleActions({
 
   MOVE_RIGHT: (state) => (
     { ...state, offsetX: state.offsetX + BLOCK_SIZE }
+  ),
+
+  ROTATE: (state) => (
+    { ...state, shape: state.shape }
   )
 }, TetrominoState) // currentTetrominoState
 

@@ -7,12 +7,12 @@ import {
   moveDown,
   moveLeft,
   moveRight,
-  // startTetrominoStack,
+  rotate,
   updateTetrominoStack
 } from '../../actions/index'
 
 const { DROP_SPEED, shapesMapping } = constants
-const { hasCollision, getUpdatedGrid } = helpers
+const { hasCollision, getUpdatedGrid, rotateShape } = helpers
 
 const mapStateToProps = state => {
   return { isPlaying: true }
@@ -68,10 +68,11 @@ function controlTetromino () {
 
       if (keyCode === 38) {
         e.preventDefault()
-                      //
-                      // TODO:
-                      // handleRotation
-                      //
+            //
+            // TODO:  ----------> WORK IN PROGRESS
+            // handleRotation
+            //
+        rotateTetromino(tetromino, dispatch)
       } else {
         const movement = mapMovement(keyCode, dispatch)
         if (movement && !hasCollision(movement.direction, tetromino, currentGrid)) {
@@ -99,6 +100,13 @@ function mapMovement (keyCode, dispatch) {
     }
   }
   return keyMapping[keyCode]
+}
+
+function rotateTetromino (tetromino, dispatch) {
+  const shape = { tetromino }
+  const rotatedShape = rotateShape(shape)
+  const rotatedTetromino = { ...tetromino, shape: rotatedShape }
+  dispatch(rotate(rotatedTetromino))
 }
 
 export default GameContainer
