@@ -52,7 +52,10 @@ function dropTetromino () {
                         // freeze current tetromino and add to tetris stack
                         //
                         //
-      dispatch(updateTetrominoStack())
+      console.log('update stack')
+      dispatch(updateTetrominoStack(['1']))
+      console.log('post dispatch')
+      console.log(getState().get('tetrominoStackReducer'))
       setAndDropNewTetromino(dispatch)
     }
   }
