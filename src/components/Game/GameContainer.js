@@ -7,6 +7,7 @@ import {
   moveDown,
   moveLeft,
   moveRight,
+  // startTetrominoStack,
   updateTetrominoStack
 } from '../../actions/index'
 
@@ -33,6 +34,7 @@ function setAndDropNewTetromino (dispatch) {
   const randomShape = shapesMapping[randomNumber]
 
   dispatch(setCurrentTetromino({ randomShape }))
+  dispatch(moveDown())
   dispatch(dropTetromino())
 }
 
@@ -40,21 +42,15 @@ function dropTetromino () {
   return (dispatch, getState) => {
     const state = getState()
     const tetromino = state.get('currentTetrominoReducer')
+    const currentGrid = state.getIn(['tetrominoStackReducer', 'tetrominoStack'])
 
-    if (!hasCollision('down', tetromino)) {
+    if (!hasCollision('down', tetromino, currentGrid)) {
       dispatch(moveDown())
 
       window.setTimeout(() => {
         window.requestAnimationFrame(() => dispatch(dropTetromino()))
       }, DROP_SPEED)
     } else {
-          //
-          // TODO: ---> WORK IN PROGRESS
-          // freeze current tetromino and add to tetris stack
-          //
-          //
-      const currentGrid = state.getIn(['tetrominoStackReducer', 'tetrominoStack'])
-      console.log(currentGrid)
       const updatedGrid = getUpdatedGrid(currentGrid, tetromino)
       dispatch(updateTetrominoStack(updatedGrid))
       setAndDropNewTetromino(dispatch)
@@ -66,7 +62,9 @@ function controlTetromino () {
   return (dispatch, getState) => {
     window.addEventListener('keydown', e => {
       const { keyCode } = e
-      const tetromino = getState().get('currentTetrominoReducer')
+      const state = getState()
+      const tetromino = state.get('currentTetrominoReducer')
+      const currentGrid = state.getIn(['tetrominoStackReducer', 'tetrominoStack'])
 
       if (keyCode === 38) {
         e.preventDefault()
@@ -76,7 +74,7 @@ function controlTetromino () {
                       //
       } else {
         const movement = mapMovement(keyCode, dispatch)
-        if (movement && !hasCollision(movement.direction, tetromino)) {
+        if (movement && !hasCollision(movement.direction, tetromino, currentGrid)) {
           e.preventDefault()
           movement.moveTetromino()
         }

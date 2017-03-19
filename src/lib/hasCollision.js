@@ -1,8 +1,8 @@
 import constants from '../constants/constants'
 
-const { BLOCK_SIZE, BOARD_WIDTH, BOARD_HEIGHT } = constants
+const { BLOCK_SIZE, BOARD_WIDTH, BOARD_HEIGHT, INACTIVE_COLOR } = constants
 
-const hasCollision = (direction, tetromino) => {
+const hasCollision = (direction, tetromino, grid) => {
   let isColliding = false
 
   const numOfBlocksX = BOARD_WIDTH / BLOCK_SIZE
@@ -23,7 +23,9 @@ const hasCollision = (direction, tetromino) => {
         const finalX = currentX + changeX + x
         const finalY = currentY + changeY + y
 
-        if (finalX < 0 || finalX >= numOfBlocksX || finalY >= numOfBlocksY) {
+        if (finalX < 0 || finalX >= numOfBlocksX ||
+            finalY >= numOfBlocksY ||
+            isOccupied(grid, finalX, finalY)) {
           isColliding = true
         }
       }
@@ -31,6 +33,10 @@ const hasCollision = (direction, tetromino) => {
   })
 
   return isColliding
+}
+
+function isOccupied (grid, x, y) {
+  return grid[x][y] !== INACTIVE_COLOR
 }
 
 export default hasCollision
