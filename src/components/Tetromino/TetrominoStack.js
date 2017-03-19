@@ -9,12 +9,11 @@ class TetrominoStack extends React.Component {
     const { grid } = this.props
     grid.forEach((column, x) => {
       column.forEach((block, y) => {
-        let strokeColor = 'lightgray'
-        let strokeWidth = 2
-        if (block !== INACTIVE_COLOR) {
-          strokeColor = 'black'
-          strokeWidth = 4
-        }
+                                    // TODO: make grid always visible,
+                                    // with thinner lines when not occupied
+        let strokeColor = block === INACTIVE_COLOR ? 'transparent' : 'black'
+        let strokeWidth = block === INACTIVE_COLOR ? 2 : 4
+
         stack.push(
           <Rect
             key={`x:${x},y:${y}`}

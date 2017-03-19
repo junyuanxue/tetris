@@ -12,8 +12,8 @@ class Board extends React.Component {
       <div id='board'>
         <Stage width={BOARD_WIDTH} height={BOARD_HEIGHT}>
           <Layer>
-            <CurrentTetrominoContainer />
             <TetrominoStackContainer />
+            <CurrentTetrominoContainer />
           </Layer>
         </Stage>
       </div>
