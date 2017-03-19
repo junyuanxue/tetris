@@ -10,4 +10,4 @@ export const TetrominoState = Map({
   color: ''
 })
 
-export const TetrominoStackState = { grid: initialGrid }
+export const TetrominoStackState = Map({ tetrominoStack: initialGrid })

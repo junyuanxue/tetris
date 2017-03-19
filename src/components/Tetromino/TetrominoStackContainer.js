@@ -2,7 +2,7 @@ import { connect } from 'react-redux'
 import TetrominoStack from './TetrominoStack'
 
 const mapStateToProps = state => ({
-  grid: state.get('tetrominoStackReducer').grid
+  grid: state.getIn(['tetrominoStackReducer', 'tetrominoStack'])
 })
 
 const TetrominoStackContainer = connect(mapStateToProps)(TetrominoStack)

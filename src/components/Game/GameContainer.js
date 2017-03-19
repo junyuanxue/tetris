@@ -53,7 +53,7 @@ function dropTetromino () {
           // freeze current tetromino and add to tetris stack
           //
           //
-      const currentGrid = state.get('tetrominoStackReducer')
+      const currentGrid = state.getIn(['tetrominoStackReducer', 'tetrominoStack'])
       console.log(currentGrid)
       const updatedGrid = getUpdatedGrid(currentGrid, tetromino)
       dispatch(updateTetrominoStack(updatedGrid))
