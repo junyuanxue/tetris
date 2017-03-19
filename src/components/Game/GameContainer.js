@@ -48,14 +48,15 @@ function dropTetromino () {
         window.requestAnimationFrame(() => dispatch(dropTetromino()))
       }, DROP_SPEED)
     } else {
-                        //
-                        // TODO:
-                        // freeze current tetromino and add to tetris stack
-                        //
-                        //
-      const newTetrominoGrid = ['1']
-      // const newTetrominoGrid = getUpdatedGrid(tetromino, tetromino.color)
-      dispatch(updateTetrominoStack(newTetrominoGrid))
+          //
+          // TODO: ---> WORK IN PROGRESS
+          // freeze current tetromino and add to tetris stack
+          //
+          //
+      const currentGrid = state.get('tetrominoStackReducer')
+      console.log(currentGrid)
+      const updatedGrid = getUpdatedGrid(currentGrid, tetromino)
+      dispatch(updateTetrominoStack(updatedGrid))
       setAndDropNewTetromino(dispatch)
     }
   }

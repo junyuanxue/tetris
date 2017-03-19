@@ -1,4 +1,6 @@
 import { Map } from 'immutable'
+import constants from './constants'
+const { initialGrid } = constants
 
 export const TetrominoState = Map({
   offsetX: 0,
@@ -8,4 +10,4 @@ export const TetrominoState = Map({
   color: ''
 })
 
-export const TetrominoStackState = Map({ tetrominoStack: [] })
+export const TetrominoStackState = { grid: initialGrid }
