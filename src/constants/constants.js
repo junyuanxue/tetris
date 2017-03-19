@@ -2,14 +2,15 @@ const initialGrid = []
 const BOARD_WIDTH = 330
 const BOARD_HEIGHT = 660
 const BLOCK_SIZE = 30
+const INACTIVE_COLOR = 'transparent'
 
 for (let i = 0; i < BOARD_WIDTH / BLOCK_SIZE; i++) {
-  initialGrid.push(['grey'])
+  initialGrid.push([])
 }
 
 for (let i = 0; i < BOARD_WIDTH / BLOCK_SIZE; i++) {
   for (let j = 0; j < BOARD_HEIGHT / BLOCK_SIZE; j++) {
-    initialGrid[i].push('grey')
+    initialGrid[i].push(INACTIVE_COLOR)
   }
 }
 
@@ -25,6 +26,8 @@ const constants = {
   START_X: 4,
 
   START_Y: -2,
+
+  INACTIVE_COLOR,
 
   initialGrid,
 
