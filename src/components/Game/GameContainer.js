@@ -6,7 +6,8 @@ import {
   setCurrentTetromino,
   moveDown,
   moveLeft,
-  moveRight
+  moveRight,
+  updateTetrominoStack
 } from '../../actions/index'
 
 const { DROP_SPEED, shapesMapping } = constants
@@ -51,6 +52,7 @@ function dropTetromino () {
                         // freeze current tetromino and add to tetris stack
                         //
                         //
+      dispatch(updateTetrominoStack())
       setAndDropNewTetromino(dispatch)
     }
   }
