@@ -5,10 +5,12 @@ const { initialGrid } = constants
 
 const tetrominoStackReducer = handleActions({
   START_TETROMINO_STACK: (state) => (
-    state.set('tetrominoStack', initialGrid)
+    // state.set('tetrominoStack', initialGrid)
+    { grid: initialGrid }
   ),
   UPDATE_TETROMINO_STACK: (state, { payload }) => (
-    state.set('tetrominoStack', payload)
+    // state.set('tetrominoStack', payload)
+    { grid: payload }
   )
 }, TetrominoStackState)
 

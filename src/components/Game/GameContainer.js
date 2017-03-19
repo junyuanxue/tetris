@@ -11,7 +11,7 @@ import {
 } from '../../actions/index'
 
 const { DROP_SPEED, shapesMapping } = constants
-const { hasCollision } = helpers
+const { hasCollision, getUpdatedGrid } = helpers
 
 const mapStateToProps = state => {
   return { isPlaying: true }
@@ -38,7 +38,8 @@ function setAndDropNewTetromino (dispatch) {
 
 function dropTetromino () {
   return (dispatch, getState) => {
-    const tetromino = getState().get('currentTetrominoReducer')
+    const state = getState()
+    const tetromino = state.get('currentTetrominoReducer')
 
     if (!hasCollision('down', tetromino)) {
       dispatch(moveDown())
@@ -52,10 +53,9 @@ function dropTetromino () {
                         // freeze current tetromino and add to tetris stack
                         //
                         //
-      console.log('update stack')
-      dispatch(updateTetrominoStack(['1']))
-      console.log('post dispatch')
-      console.log(getState().get('tetrominoStackReducer'))
+      const newTetrominoGrid = ['1']
+      // const newTetrominoGrid = getUpdatedGrid(tetromino, tetromino.color)
+      dispatch(updateTetrominoStack(newTetrominoGrid))
       setAndDropNewTetromino(dispatch)
     }
   }
