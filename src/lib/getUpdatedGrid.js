@@ -2,9 +2,15 @@ import constants from '../constants/constants'
 const { BLOCK_SIZE } = constants
 
 const getUpdatedGrid = (grid, tetromino) => {
-  const { color } = tetromino
+  let updatedGrid = grid.map(block => [...block])
   const blockCoordinates = getBlockCoordinates(tetromino)
-  return ['1']
+
+  blockCoordinates.forEach(coordinates => {
+    const { x, y } = coordinates
+    updatedGrid[x][y] = tetromino.color
+  })
+
+  return updatedGrid
 }
 
 function getBlockCoordinates (tetromino) {
