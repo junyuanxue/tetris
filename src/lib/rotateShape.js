@@ -14,9 +14,9 @@ const rotateShape = (shape) => {
 
   const zeros = new Array(newStartIndex).fill(0)
 
-  matrix.forEach((row, y) => {
-    rotateShape[y] = rotateShape[y].slice(newStartIndex).concat(zeros)
-  })
+  for (let row = 0; row < matrix.length; row++) {
+    rotatedShape[row] = rotatedShape[row].slice(newStartIndex).concat(zeros)
+  }
 
   return rotatedShape
 }
