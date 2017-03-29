@@ -1,9 +1,9 @@
 #board {
-  position: absolute;
-  left: 10%;
-  top: 5%;
+  position: relative;
+  top: 50px;
 }
 
 #board .konvajs-content {
   border: 2px solid #000;
+  margin: auto;
 }
