@@ -4,7 +4,7 @@ class Game extends React.Component {
   render () {
     this.props.startGame()
     return (
-      <div>Gaaaaaame</div>
+      <div> ------- THE JOY OF TETRIS LOL :D --------- </div>
     )
   }
 }
