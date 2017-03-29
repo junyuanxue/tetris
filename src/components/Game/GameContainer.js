@@ -105,10 +105,8 @@ function mapMovement (keyCode, dispatch) {
 function rotateTetromino (tetromino, dispatch) {
   const { shape } = tetromino
   const rotatedShape = rotateShape(shape)
-  console.log(rotatedShape)
   const rotatedTetromino = { ...tetromino, shape: rotatedShape }
   dispatch(rotate(rotatedTetromino))
-  debugger
 }
 
 export default GameContainer
