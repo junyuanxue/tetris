@@ -52,7 +52,9 @@ function dropTetromino () {
       }, DROP_SPEED)
     } else {
       const updatedGrid = getUpdatedGrid(currentGrid, tetromino)
-      dispatch(updateTetrominoStack(updatedGrid))
+      dispatch(updateTetrominoStack(updatedGrid)) // -------- TODO --------
+                                                  // clear completed lines
+                                                  // -------- TODO --------
       setAndDropNewTetromino(dispatch)
     }
   }
@@ -68,10 +70,6 @@ function controlTetromino () {
 
       if (keyCode === 38) {
         e.preventDefault()
-            //
-            // TODO:  ----------> WORK IN PROGRESS
-            // handleRotation
-            //
         rotateTetromino(tetromino, dispatch)
       } else {
         const movement = mapMovement(keyCode, dispatch)
