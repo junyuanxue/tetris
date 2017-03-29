@@ -3,6 +3,8 @@
 ## About :video_game:
 Tetris game built with React and Redux.
 
+Play at https://junyuanxue.github.io/tetris/.
+
 ## Tools :wrench:
 * React
 * Redux Immutable
