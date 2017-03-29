@@ -2,7 +2,7 @@
   "name": "tetris",
   "version": "0.1.0",
   "private": true,
-  "homepage": "http://junyuanxue.github.io/react-tetris",
+  "homepage": "http://junyuanxue.github.io/tetris",
   "devDependencies": {
     "gh-pages": "^0.12.0",
     "react-redux": "^5.0.2",
