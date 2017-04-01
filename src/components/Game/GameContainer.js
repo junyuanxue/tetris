@@ -55,6 +55,9 @@ function dropTetromino () {
       dispatch(updateTetrominoStack(updatedGrid)) // -------- TODO --------
                                                   // clear completed lines
                                                   // -------- TODO --------
+                              // -------- TODO --------
+                              // Check if game is over
+                              // -------- TODO --------
       setAndDropNewTetromino(dispatch)
     }
   }
