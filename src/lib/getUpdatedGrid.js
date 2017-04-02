@@ -10,6 +10,8 @@ const getUpdatedGrid = (grid, tetromino) => {
     updatedGrid[x][y] = tetromino.color
   })
 
+  const rowsToClear = getCompletedRows(grid, blockCoordinates)
+
   return updatedGrid
 }
 
@@ -31,6 +33,25 @@ function getBlockCoordinates (tetromino) {
   })
 
   return blockCoordinates
+}
+
+function getCompletedRows (grid, blockCoordinates) {
+  const rowsToClear = []
+  const gridCopy = getGridCopy(grid, tetromino, 'temp-color')
+  // const blockCoordinates = getBlockCoordinates(tetromino)
+
+
+}
+
+function getGridCopy (grid, blockCoordinates, color) {
+  const gridCopy = grid.map(x => [...x])
+
+  blockCoordinates.forEach(coordinates => {
+    const { x, y } = coordinates
+    gridCopy[x][y] = color
+  })
+
+  return gridCopy
 }
 
 export default getUpdatedGrid
