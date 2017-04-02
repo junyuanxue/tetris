@@ -10,9 +10,6 @@ const getUpdatedGrid = (grid, tetromino) => {
     updatedGrid[x][y] = tetromino.color
   })
 
-  const rowsToClear = getCompletedRows(updatedGrid)
-  if (rowsToClear.length) updatedGrid = clearRows(updatedGrid, rowsToClear)
-
   return updatedGrid
 }
 
@@ -36,23 +33,7 @@ function getBlockCoordinates (tetromino) {
   return blockCoordinates
 }
 
-function getCompletedRows (grid) {
-  const rowsToClear = []
 
-  for (let row = 0; row < grid[0].length; row++) {
-    let isCompleteRow = true
-
-    grid.forEach(column => {
-      if (column[row] === INACTIVE_COLOR) {
-        isCompleteRow = false
-      }
-    })
-
-    if (isCompleteRow) rowsToClear.push(row)
-  }
-
-  return rowsToClear
-}
 
 function clearRows (grid, rowsToClear) {
   rowsToClear.forEach(row => {

@@ -12,7 +12,12 @@ import {
 } from '../../actions/index'
 
 const { DROP_SPEED, shapesMapping } = constants
-const { hasCollision, getUpdatedGrid, rotateShape } = helpers
+const {
+  hasCollision,
+  getUpdatedGrid,
+  getCompletedRows,
+  rotateShape
+} = helpers
 
 const mapStateToProps = state => {
   return { isPlaying: true }
@@ -51,7 +56,11 @@ function dropTetromino () {
         window.requestAnimationFrame(() => dispatch(dropTetromino()))
       }, DROP_SPEED)
     } else {
-      const updatedGrid = getUpdatedGrid(currentGrid, tetromino)
+      let updatedGrid = getUpdatedGrid(currentGrid, tetromino)
+      const rowsToClear = getCompletedRows(updatedGrid)
+      if (rowsToClear.length) {
+
+      }
       dispatch(updateTetrominoStack(updatedGrid)) // -------- TODO --------
                                                   // add animation when clearing completed lines
                                                   // -------- TODO --------
