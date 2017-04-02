@@ -61,14 +61,18 @@ function dropTetromino () {
       const rowsToClear = getCompletedRows(updatedGrid)
       if (rowsToClear.length) {
         updatedGrid = clearRows(updatedGrid, rowsToClear)
+        setTimeout(() => {
+          dispatch(updateTetrominoStack(updatedGrid))
+          setAndDropNewTetromino(dispatch)
+        }, 600)
+      } else {
+        dispatch(updateTetrominoStack(updatedGrid))
+        setAndDropNewTetromino(dispatch)
       }
-      dispatch(updateTetrominoStack(updatedGrid)) // -------- TODO --------
-                                                  // add animation when clearing completed lines
-                                                  // -------- TODO --------
+
                               // -------- TODO --------
                               // Check if game is over
                               // -------- TODO --------
-      setAndDropNewTetromino(dispatch)
     }
   }
 }
