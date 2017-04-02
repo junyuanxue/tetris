@@ -8,7 +8,8 @@ import {
   moveLeft,
   moveRight,
   rotate,
-  updateTetrominoStack
+  updateTetrominoStack,
+  endGame
 } from '../../actions/index'
 
 const { DROP_SPEED, shapesMapping } = constants
@@ -52,7 +53,7 @@ function dropTetromino () {
     const hasBottomCollision = hasCollision('down', tetromino, currentGrid)
 
     if (hasBottomCollision === 'GAME_OVER') {
-      console.log('game over :(')
+      dispatch(endGame())
     } else if (!hasBottomCollision) {
       dispatch(moveDown())
 
