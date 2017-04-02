@@ -1,5 +1,6 @@
 import { connect } from 'react-redux'
 import Game from './Game'
+import { GameState as initialState } from '../../constants/states'
 import constants from '../../constants/constants'
 import helpers from '../../lib/index'
 import {
@@ -23,10 +24,14 @@ const {
 
 const mapStateToProps = state => {
   const currentState = state.get('gameReducer')
-  return {
-    isPlaying: true,
-    isGameOver: currentState.isGameOver
+  if (currentState.score >= 0) {
+    return {
+      isPlaying: true,
+      isGameOver: currentState.isGameOver,
+      score: currentState.score
+    }
   }
+  return initialState.toObject()
 }
 
 const mapDispatchToProps = (dispatch) => {
