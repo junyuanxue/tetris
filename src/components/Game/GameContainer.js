@@ -16,6 +16,7 @@ const {
   hasCollision,
   getUpdatedGrid,
   getCompletedRows,
+  clearRows,
   rotateShape
 } = helpers
 
@@ -59,7 +60,7 @@ function dropTetromino () {
       let updatedGrid = getUpdatedGrid(currentGrid, tetromino)
       const rowsToClear = getCompletedRows(updatedGrid)
       if (rowsToClear.length) {
-
+        updatedGrid = clearRows(updatedGrid, rowsToClear)
       }
       dispatch(updateTetrominoStack(updatedGrid)) // -------- TODO --------
                                                   // add animation when clearing completed lines
