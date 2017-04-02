@@ -13,3 +13,21 @@
   z-index: 1;
   background-color: rgba(255, 255, 0, 0.8);
 }
+
+#game .score {
+  height: 100px;
+  width: 100px;
+  position: absolute;
+  top: 50px;
+  left: 30px;
+  text-align: center;
+}
+
+#game .score > span {
+  display: block;
+}
+
+#game .score .value {
+  font-size: 40px;
+  margin-top: 10px;
+}
