@@ -11,3 +11,8 @@ export const TetrominoState = Map({
 })
 
 export const TetrominoStackState = Map({ tetrominoStack: initialGrid })
+
+export const GameState = Map({
+  isGameOver: false,
+  score: 0
+})
