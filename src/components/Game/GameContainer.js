@@ -62,12 +62,11 @@ function dropTetromino () {
       if (rowsToClear.length) {
         updatedGrid = clearRows(updatedGrid, rowsToClear)
         setTimeout(() => {
-          dispatch(updateTetrominoStack(updatedGrid))
-          setAndDropNewTetromino(dispatch)
+          refreshTetrominoesOnBoard(dispatch, updatedGrid)
+          // adding score
         }, 600)
       } else {
-        dispatch(updateTetrominoStack(updatedGrid))
-        setAndDropNewTetromino(dispatch)
+        refreshTetrominoesOnBoard(dispatch, updatedGrid)
       }
 
                               // -------- TODO --------
@@ -75,6 +74,11 @@ function dropTetromino () {
                               // -------- TODO --------
     }
   }
+}
+
+function refreshTetrominoesOnBoard (dispatch, updatedGrid) {
+  dispatch(updateTetrominoStack(updatedGrid))
+  setAndDropNewTetromino(dispatch)
 }
 
 function controlTetromino () {
