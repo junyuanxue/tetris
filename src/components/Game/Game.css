@@ -1,0 +1,15 @@
+#game .game-over {
+  display: block;
+  position: absolute;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 50px;
+  line-height: 100px;
+  top: 50%;
+  margin-top: -50px;
+  height: 100px;
+  width: 100%;
+  text-align: center;
+  z-index: 1;
+  background-color: rgba(255, 255, 0, 0.8);
+}

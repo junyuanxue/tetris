@@ -30,7 +30,7 @@ const hasCollision = (direction, tetromino, grid) => {
           isColliding = true
         }
 
-        if (isColliding && currentY === 0) {
+        if (isColliding && currentY <= 0) {
           isGameOver = true
         }
       }

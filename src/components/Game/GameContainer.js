@@ -22,7 +22,11 @@ const {
 } = helpers
 
 const mapStateToProps = state => {
-  return { isPlaying: true }
+  const currentState = state.get('gameReducer')
+  return {
+    isPlaying: true,
+    isGameOver: currentState.isGameOver
+  }
 }
 
 const mapDispatchToProps = (dispatch) => {
@@ -53,6 +57,7 @@ function dropTetromino () {
     const hasBottomCollision = hasCollision('down', tetromino, currentGrid)
 
     if (hasBottomCollision === 'GAME_OVER') {
+      console.log('game over.....')
       dispatch(endGame())
     } else if (!hasBottomCollision) {
       dispatch(moveDown())

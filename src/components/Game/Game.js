@@ -1,12 +1,15 @@
 import React from 'react'
+import './Game.css'
 
 class Game extends React.Component {
   render () {
     this.props.startGame()
     return (
-      <div>
+      <div id='game'>
         <div> ------- THE JOY OF TETRIS LOL :D --------- </div>
-        <div>{this.props.isGameOver ? 'Game Over :(' : ''}</div>
+        <div className={this.props.isGameOver ? 'game-over' : 'hide'}>
+          ------ Game over :( -----
+        </div>
       </div>
     )
   }
