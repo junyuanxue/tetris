@@ -53,7 +53,7 @@ function dropTetromino () {
     } else {
       const updatedGrid = getUpdatedGrid(currentGrid, tetromino)
       dispatch(updateTetrominoStack(updatedGrid)) // -------- TODO --------
-                                                  // clear completed lines
+                                                  // add animation when clearing completed lines
                                                   // -------- TODO --------
                               // -------- TODO --------
                               // Check if game is over

@@ -13,7 +13,6 @@ const getUpdatedGrid = (grid, tetromino) => {
   const rowsToClear = getCompletedRows(updatedGrid)
   if (rowsToClear.length) updatedGrid = clearRows(updatedGrid, rowsToClear)
 
-console.log(updatedGrid)
   return updatedGrid
 }
 
