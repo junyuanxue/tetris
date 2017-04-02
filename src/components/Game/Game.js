@@ -10,6 +10,12 @@ class Game extends React.Component {
         <div className={this.props.isGameOver ? 'game-over' : 'hide'}>
           ------ Game over :( -----
         </div>
+        <div className='score'>
+          <span className='text'>Score</span>
+          <span className='value'>
+            {this.props.score}
+          </span>
+        </div>
       </div>
     )
   }
@@ -17,7 +23,8 @@ class Game extends React.Component {
 
 Game.propTypes = {
   startGame: React.PropTypes.func,
-  isGameOver: React.PropTypes.bool
+  isGameOver: React.PropTypes.bool,
+  score: React.PropTypes.number
 }
 
 export default Game
