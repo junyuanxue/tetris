@@ -77,7 +77,9 @@ function dropTetromino () {
         updatedGrid = clearRows(updatedGrid, rowsToClear)
         setTimeout(() => {
           refreshTetrominoesOnBoard(dispatch, updatedGrid)
-          // adding score
+          //  ---- TODO ----
+          // adding score (5 per row?)
+          // ---- TODO ----
         }, 600)
       } else {
         refreshTetrominoesOnBoard(dispatch, updatedGrid)
