@@ -1,5 +1,5 @@
 import constants from '../constants/constants'
-const { BLOCK_SIZE } = constants
+const { BLOCK_SIZE, INACTIVE_COLOR } = constants
 
 const getUpdatedGrid = (grid, tetromino) => {
   let updatedGrid = grid.map(block => [...block])
@@ -10,8 +10,10 @@ const getUpdatedGrid = (grid, tetromino) => {
     updatedGrid[x][y] = tetromino.color
   })
 
-  const rowsToClear = getCompletedRows(grid, blockCoordinates)
+  const rowsToClear = getCompletedRows(updatedGrid)
+  if (rowsToClear.length) updatedGrid = clearRows(updatedGrid, rowsToClear)
 
+console.log(updatedGrid)
   return updatedGrid
 }
 
@@ -35,23 +37,39 @@ function getBlockCoordinates (tetromino) {
   return blockCoordinates
 }
 
-function getCompletedRows (grid, blockCoordinates) {
+function getCompletedRows (grid) {
   const rowsToClear = []
-  const gridCopy = getGridCopy(grid, tetromino, 'temp-color')
-  // const blockCoordinates = getBlockCoordinates(tetromino)
 
+  for (let row = 0; row < grid[0].length; row++) {
+    let isCompleteRow = true
 
+    grid.forEach(column => {
+      if (column[row] === INACTIVE_COLOR) {
+        isCompleteRow = false
+      }
+    })
+
+    if (isCompleteRow) rowsToClear.push(row)
+  }
+
+  return rowsToClear
 }
 
-function getGridCopy (grid, blockCoordinates, color) {
-  const gridCopy = grid.map(x => [...x])
-
-  blockCoordinates.forEach(coordinates => {
-    const { x, y } = coordinates
-    gridCopy[x][y] = color
+function clearRows (grid, rowsToClear) {
+  rowsToClear.forEach(row => {
+    grid.forEach(column => {
+      column[row] = INACTIVE_COLOR
+    })
   })
 
-  return gridCopy
+  for (let row = rowsToClear[0] - 1; row >= 0; row--) {
+    const numOfRowsToShiftDown = rowsToClear.length
+    grid.forEach(column => {
+      column[row + numOfRowsToShiftDown] = column[row]
+    })
+  }
+
+  return grid
 }
 
 export default getUpdatedGrid
