@@ -49,8 +49,11 @@ function dropTetromino () {
     const state = getState()
     const tetromino = state.get('currentTetrominoReducer')
     const currentGrid = state.getIn(['tetrominoStackReducer', 'tetrominoStack'])
+    const hasBottomCollision = hasCollision('down', tetromino, currentGrid)
 
-    if (!hasCollision('down', tetromino, currentGrid)) {
+    if (hasBottomCollision === 'GAME_OVER') {
+      console.log('game over :(')
+    } else if (!hasBottomCollision) {
       dispatch(moveDown())
 
       window.setTimeout(() => {
@@ -68,10 +71,6 @@ function dropTetromino () {
       } else {
         refreshTetrominoesOnBoard(dispatch, updatedGrid)
       }
-
-                              // -------- TODO --------
-                              // Check if game is over
-                              // -------- TODO --------
     }
   }
 }

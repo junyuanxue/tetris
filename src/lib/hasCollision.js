@@ -4,6 +4,7 @@ const { BLOCK_SIZE, BOARD_WIDTH, BOARD_HEIGHT, INACTIVE_COLOR } = constants
 
 const hasCollision = (direction, tetromino, grid) => {
   let isColliding = false
+  let isGameOver = false
 
   const numOfBlocksX = BOARD_WIDTH / BLOCK_SIZE
   const numOfBlocksY = BOARD_HEIGHT / BLOCK_SIZE
@@ -28,11 +29,15 @@ const hasCollision = (direction, tetromino, grid) => {
             isOccupied(grid, finalX, finalY)) {
           isColliding = true
         }
+
+        if (isColliding && currentY === 0) {
+          isGameOver = true
+        }
       }
     })
   })
 
-  return isColliding
+  return isGameOver ? 'GAME_OVER' : isColliding
 }
 
 function isOccupied (grid, x, y) {
