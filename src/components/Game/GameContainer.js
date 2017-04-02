@@ -62,7 +62,6 @@ function dropTetromino () {
     const hasBottomCollision = hasCollision('down', tetromino, currentGrid)
 
     if (hasBottomCollision === 'GAME_OVER') {
-      console.log('game over.....')
       dispatch(endGame())
     } else if (!hasBottomCollision) {
       dispatch(moveDown())
@@ -73,6 +72,7 @@ function dropTetromino () {
     } else {
       let updatedGrid = getUpdatedGrid(currentGrid, tetromino)
       const rowsToClear = getCompletedRows(updatedGrid)
+
       if (rowsToClear.length) {
         updatedGrid = clearRows(updatedGrid, rowsToClear)
         setTimeout(() => {
