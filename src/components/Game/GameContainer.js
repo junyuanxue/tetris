@@ -10,7 +10,8 @@ import {
   moveRight,
   rotate,
   updateTetrominoStack,
-  endGame
+  endGame,
+  incrementScore
 } from '../../actions/index'
 
 const { DROP_SPEED, shapesMapping } = constants
@@ -72,14 +73,13 @@ function dropTetromino () {
     } else {
       let updatedGrid = getUpdatedGrid(currentGrid, tetromino)
       const rowsToClear = getCompletedRows(updatedGrid)
+      const numOfRowsToClear = rowsToClear.length
 
-      if (rowsToClear.length) {
+      if (numOfRowsToClear) {
         updatedGrid = clearRows(updatedGrid, rowsToClear)
         setTimeout(() => {
           refreshTetrominoesOnBoard(dispatch, updatedGrid)
-          //  ---- TODO ----
-          // adding score (5 per row?)
-          // ---- TODO ----
+          updateScore(numOfRowsToClear, dispatch, getState)
         }, 600)
       } else {
         refreshTetrominoesOnBoard(dispatch, updatedGrid)
@@ -138,6 +138,10 @@ function rotateTetromino (tetromino, dispatch) {
   const rotatedShape = rotateShape(shape)
   const rotatedTetromino = { ...tetromino, shape: rotatedShape }
   dispatch(rotate(rotatedTetromino))
+}
+
+function updateScore (numOfRowsToClear, dispatch, getState) {
+  
 }
 
 export default GameContainer
