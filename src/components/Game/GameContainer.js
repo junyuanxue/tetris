@@ -14,7 +14,7 @@ import {
   incrementScore
 } from '../../actions/index'
 
-const { DROP_SPEED, shapesMapping } = constants
+const { DROP_SPEED, shapesMapping, SCORE_PER_ROW } = constants
 const {
   hasCollision,
   getUpdatedGrid,
@@ -79,7 +79,7 @@ function dropTetromino () {
         updatedGrid = clearRows(updatedGrid, rowsToClear)
         setTimeout(() => {
           refreshTetrominoesOnBoard(dispatch, updatedGrid)
-          updateScore(numOfRowsToClear, dispatch, getState)
+          updateScore(numOfRowsToClear, state.get('gameReducer'), dispatch)
         }, 600)
       } else {
         refreshTetrominoesOnBoard(dispatch, updatedGrid)
@@ -140,8 +140,14 @@ function rotateTetromino (tetromino, dispatch) {
   dispatch(rotate(rotatedTetromino))
 }
 
-function updateScore (numOfRowsToClear, dispatch, getState) {
-  
+function updateScore (numOfRowsToClear, gameState, dispatch) {
+  const scoreGained = numOfRowsToClear * SCORE_PER_ROW
+  console.log(gameState)
+  const newScore = gameState.score + scoreGained
+  const newGameState = { ...gameState, score: newScore }
+  dispatch(incrementScore(newGameState))
+  console.log(newGameState)
+  console.log('dispatched')
 }
 
 export default GameContainer

@@ -29,6 +29,8 @@ const constants = {
 
   INACTIVE_COLOR,
 
+  SCORE_PER_ROW: 3,
+
   initialGrid,
 
   shapesMapping: ['i', 'o', 't', 'j', 'l', 'z', 's'],
