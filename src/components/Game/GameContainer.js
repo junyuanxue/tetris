@@ -142,7 +142,7 @@ function rotateTetromino (tetromino, dispatch) {
 
 function updateScore (numOfRowsToClear, gameState, dispatch) {
   const scoreGained = numOfRowsToClear * SCORE_PER_ROW
-  console.log(gameState)
+  console.log(gameState.toObject())
   const newScore = gameState.score + scoreGained
   const newGameState = { ...gameState, score: newScore }
   dispatch(incrementScore(newGameState))
