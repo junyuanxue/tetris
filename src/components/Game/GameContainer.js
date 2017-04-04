@@ -1,6 +1,5 @@
 import { connect } from 'react-redux'
 import Game from './Game'
-import { GameState as initialState } from '../../constants/states'
 import constants from '../../constants/constants'
 import helpers from '../../lib/index'
 import {
@@ -136,6 +135,8 @@ function rotateTetromino (tetromino, dispatch) {
 
 function updateScore (numOfRowsToClear, dispatch) {
   const scoreGained = numOfRowsToClear * SCORE_PER_ROW
+  // ---- TODO ----
+  // ADD MORE COMPLICATED SCORING, IN A SEPARATE HELPER FUNCTION
   dispatch(incrementScore(scoreGained))
 }
 
