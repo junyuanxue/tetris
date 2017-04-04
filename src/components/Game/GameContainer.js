@@ -140,7 +140,7 @@ function rotateTetromino (tetromino, dispatch) {
   dispatch(rotate(rotatedTetromino))
 }
 
-function updateScore (numOfRowsToClear, score, dispatch) {
+function updateScore (numOfRowsToClear, dispatch) {
   const scoreGained = numOfRowsToClear * SCORE_PER_ROW
   dispatch(incrementScore(scoreGained))
 }
