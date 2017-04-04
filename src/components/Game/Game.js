@@ -2,8 +2,11 @@ import React from 'react'
 import './Game.css'
 
 class Game extends React.Component {
-  render () {
+  componentWillMount () {
     this.props.startGame()
+  }
+
+  render () {
     return (
       <div id='game'>
         <div> ------- THE JOY OF TETRIS LOL :D --------- </div>

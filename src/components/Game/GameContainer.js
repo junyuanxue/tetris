@@ -23,17 +23,11 @@ const {
   rotateShape
 } = helpers
 
-const mapStateToProps = state => {
-  const currentState = state.get('gameReducer')
-  if (currentState.score >= 0) {
-    return {
-      isPlaying: true,
-      isGameOver: currentState.isGameOver,
-      score: currentState.score
-    }
-  }
-  return initialState.toObject()
-}
+const mapStateToProps = state => ({
+  isPlaying: true,
+  isGameOver: state.getIn(['gameReducer', 'isGameOver']),
+  score: state.getIn(['gameReducer', 'score'])
+})
 
 const mapDispatchToProps = (dispatch) => {
   return {
