@@ -79,7 +79,7 @@ function dropTetromino () {
         updatedGrid = clearRows(updatedGrid, rowsToClear)
         setTimeout(() => {
           refreshTetrominoesOnBoard(dispatch, updatedGrid)
-          updateScore(numOfRowsToClear, state.get('gameReducer'), dispatch)
+          updateScore(numOfRowsToClear, dispatch)
         }, 600)
       } else {
         refreshTetrominoesOnBoard(dispatch, updatedGrid)
@@ -140,14 +140,9 @@ function rotateTetromino (tetromino, dispatch) {
   dispatch(rotate(rotatedTetromino))
 }
 
-function updateScore (numOfRowsToClear, gameState, dispatch) {
+function updateScore (numOfRowsToClear, score, dispatch) {
   const scoreGained = numOfRowsToClear * SCORE_PER_ROW
-  console.log(gameState.toObject())
-  const newScore = gameState.score + scoreGained
-  const newGameState = { ...gameState, score: newScore }
-  dispatch(incrementScore(newGameState))
-  console.log(newGameState)
-  console.log('dispatched')
+  dispatch(incrementScore(scoreGained))
 }
 
 export default GameContainer
