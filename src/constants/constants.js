@@ -21,7 +21,7 @@ const constants = {
 
   BLOCK_SIZE,
 
-  DROP_SPEED: 500,
+  DROP_SPEED: [500, 350, 250, 100],
 
   START_X: 4,
 

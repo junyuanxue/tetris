@@ -13,14 +13,15 @@ import {
   incrementScore
 } from '../../actions/index'
 
-const { DROP_SPEED, shapesMapping } = constants
+const { shapesMapping } = constants
 const {
   hasCollision,
   getUpdatedGrid,
   getCompletedRows,
   clearRows,
   rotateShape,
-  calculateScoreGained
+  calculateScoreGained,
+  getDropSpeed
 } = helpers
 
 const mapStateToProps = state => ({
@@ -60,10 +61,11 @@ function dropTetromino () {
       dispatch(endGame())
     } else if (!hasBottomCollision) {
       dispatch(moveDown())
-
+      const score = state.getIn(['gameReducer', 'score'])
+      const dropSpeed = getDropSpeed(score)
       window.setTimeout(() => {
         window.requestAnimationFrame(() => dispatch(dropTetromino()))
-      }, DROP_SPEED)
+      }, dropSpeed)
     } else {
       let updatedGrid = getUpdatedGrid(currentGrid, tetromino)
       const rowsToClear = getCompletedRows(updatedGrid)
