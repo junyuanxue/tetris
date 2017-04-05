@@ -13,13 +13,14 @@ import {
   incrementScore
 } from '../../actions/index'
 
-const { DROP_SPEED, shapesMapping, SCORE_PER_ROW } = constants
+const { DROP_SPEED, shapesMapping } = constants
 const {
   hasCollision,
   getUpdatedGrid,
   getCompletedRows,
   clearRows,
-  rotateShape
+  rotateShape,
+  calculateScoreGained
 } = helpers
 
 const mapStateToProps = state => ({
@@ -134,9 +135,7 @@ function rotateTetromino (tetromino, dispatch) {
 }
 
 function updateScore (numOfRowsToClear, dispatch) {
-  const scoreGained = numOfRowsToClear * SCORE_PER_ROW
-  // ---- TODO ----
-  // ADD MORE COMPLICATED SCORING, IN A SEPARATE HELPER FUNCTION
+  const scoreGained = calculateScoreGained(numOfRowsToClear)
   dispatch(incrementScore(scoreGained))
 }
 
