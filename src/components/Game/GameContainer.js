@@ -15,13 +15,13 @@ import {
 
 const { shapesMapping } = constants
 const {
+  getDropSpeed,
   hasCollision,
   getUpdatedGrid,
   getCompletedRows,
   clearRows,
   rotateShape,
-  calculateScoreGained,
-  getDropSpeed
+  calculateScoreGained
 } = helpers
 
 const mapStateToProps = state => ({
@@ -63,6 +63,7 @@ function dropTetromino () {
       dispatch(moveDown())
       const score = state.getIn(['gameReducer', 'score'])
       const dropSpeed = getDropSpeed(score)
+
       window.setTimeout(() => {
         window.requestAnimationFrame(() => dispatch(dropTetromino()))
       }, dropSpeed)
